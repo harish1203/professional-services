@@ -15,11 +15,11 @@ def validate_folder_access(input_folder):
         logging.error(msg)
 
 
-def main(gcloud_invoke, gcloud_output, output_folder):
+def main(gcloud_invoke, rules_file, gcloud_output, output_folder):
     try:
         # check validity of input folders
         if validate_folder_access(output_folder):
-            irm_mig.run_migration(gcloud_invoke, gcloud_output, output_folder)
+            irm_mig.run_migration(gcloud_invoke, rules_file, gcloud_output, output_folder)
 
     except:
         logging.error("Oops! Ran into an error. Kindly check the trace log")
