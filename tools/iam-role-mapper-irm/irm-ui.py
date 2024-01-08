@@ -19,12 +19,12 @@ def validate_folder_access(folder):
         logging.error(msg)
 
 
-def main(execute, rules_file, generate_report, output_folder):
+def main(execute, project_id, rules_file, generate_report, output_folder, suffix):
     try:
         # check validity of input folders
         #validate_folder_access(output_folder)
         # pass the input values to the mig class
-        irm_mig.run_migration(execute, rules_file, generate_report, output_folder)
+        irm_mig.run_migration(execute, project_id, rules_file, generate_report, output_folder, suffix)
         # irm_mig.run_migration()
 
     except:
@@ -83,7 +83,7 @@ if __name__ == "__main__":
         "--suffix",
         dest="suffix",
         default= "v1", 
-        help="[REQUIRED]Project_id of the target GCP project where the custom roles are to be deployed,[TYPE]=Boolean",
+        help="[OPTIONAL]Add a suffix string value to the name of the custom role,[TYPE]=STRING",
     )
 
 
